@@ -16,7 +16,7 @@ const HomeComp: FC<iProps> = ({ props }) => {
     <div>
       <Container>
         <DisplayHolder>
-          <Image src={pix} />
+          <Image src={props?.snippet.thumbnails.default.url} />
           <Video src={vid} autoPlay playsInline loop muted />
 
           <Time>10:00</Time>

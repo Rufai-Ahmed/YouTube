@@ -6,13 +6,13 @@ import { getSearchedVideo } from "../../API/API";
 const LandingView = () => {
   const [state, setState] = useState<Array<{}>>([]);
 
+  let cat = JSON.parse(localStorage.getItem("cat")!);
+
   useEffect(() => {
-    getSearchedVideo().then((res) => {
+    getSearchedVideo(cat).then((res) => {
       setState(res?.items);
     });
-  }, []);
-
-  console.log(state);
+  }, [cat]);
 
   return (
     <div>

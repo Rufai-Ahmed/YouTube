@@ -8,6 +8,8 @@ interface iProps {
 
 export const AvatarComp: FC<iProps> = ({ channelID }) => {
   const [state, setState]: any = useState<string>("");
+  console.log("state: ", state);
+
   useEffect(() => {
     getChannelDetail(channelID).then((res) => {
       setState(res);

@@ -4,12 +4,16 @@ import styled from "styled-components";
 interface iProps {
   bg?: string;
   text?: string;
+  value?: any;
+  onClick: any;
 }
-const NavComp: React.FC<iProps> = ({ bg, text }) => {
+const NavComp: React.FC<iProps> = ({ bg, text, value, onClick }) => {
   return (
     <div>
-      <Container bg={bg}>
-        <Txt bg={bg}>{text}</Txt>
+      <Container bg={bg} onClick={onClick}>
+        <Txt value={value} bg={bg}>
+          {text}
+        </Txt>
       </Container>
     </div>
   );
@@ -17,9 +21,11 @@ const NavComp: React.FC<iProps> = ({ bg, text }) => {
 
 export default NavComp;
 
-const Txt = styled.div<{ bg?: string }>`
+const Txt = styled.button<{ bg?: string }>`
   font-size: 12px;
   color: ${({ bg }) => (bg ? "white" : "black")};
+  border: none;
+  background-color: transparent;
 `;
 const Container = styled.div<{ bg?: string }>`
   padding: 8px 20px;

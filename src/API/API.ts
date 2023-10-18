@@ -1,15 +1,15 @@
 import axios from "axios";
 
-export const getSearchedVideo = async () => {
+export const getSearchedVideo = async (type: any) => {
   try {
     const options = {
       method: "GET",
       url: "https://youtube-v31.p.rapidapi.com/search",
       params: {
-        q: "Debates",
+        q: type ? type : "music",
         part: "snippet,id",
         regionCode: "NG",
-        maxResults: "10",
+        maxResults: "7",
         order: "date",
       },
       headers: {
@@ -46,7 +46,12 @@ export const getChannelDetail = async (channelID: string) => {
   try {
     const response = await axios.request(options);
 
-    return response.data.items[0].snippet.thumbnails.high.url;
+    console.log(
+      "Avatar: ",
+      response.data.items[0].snippet.thumbnails.medium.url
+    );
+
+    return response.data.items[0].snippet.thumbnails.medium.url;
   } catch (error) {
     console.error(error);
   }
